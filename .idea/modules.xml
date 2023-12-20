@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/luzergia_solar_app.iml" filepath="$PROJECT_DIR$/luzergia_solar_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/luzergia_solar_app_android.iml" filepath="$PROJECT_DIR$/android/luzergia_solar_app_android.iml" />
     </modules>
   </component>
 </project>
