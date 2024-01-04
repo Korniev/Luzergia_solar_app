@@ -1,5 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:luzergia_solar_app/screens/help_desk.dart';
+import 'package:luzergia_solar_app/screens/profile.dart';
 
 class DataGraphsScreen extends StatelessWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
@@ -42,6 +44,18 @@ class DataGraphsScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          if (index == 1) {
+            MaterialPageRoute(builder: (context) => const OrderUpdates());
+          }
+          if (index == 2) {
+            MaterialPageRoute(builder: (context) => const HelpDeskScreen());
+          }
+          if (index == 3) {
+            MaterialPageRoute(builder: (context) => const ProfileScreen());
+          }
+        },
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
