@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'data_graphs.dart';
+import 'help_desk.dart';
+import 'order_updates.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -55,6 +59,21 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const DataGraphsScreen()));
+          }
+          if (index == 1) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const OrderUpdatesScreen()));
+          }
+          if (index == 2) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const HelpDeskScreen()));
+          }
+        },
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

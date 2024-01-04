@@ -48,13 +48,16 @@ class DataGraphsScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           if (index == 1) {
-            MaterialPageRoute(builder: (context) => const OrderUpdatesScreen());
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const OrderUpdatesScreen()));
           }
           if (index == 2) {
-            MaterialPageRoute(builder: (context) => const HelpDeskScreen());
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const HelpDeskScreen()));
           }
           if (index == 3) {
-            MaterialPageRoute(builder: (context) => const ProfileScreen());
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ProfileScreen()));
           }
         },
         type: BottomNavigationBarType.fixed,

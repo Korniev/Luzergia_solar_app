@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:luzergia_solar_app/screens/profile.dart';
+
+import 'data_graphs.dart';
+import 'order_updates.dart';
 
 class HelpDeskScreen extends StatelessWidget {
   const HelpDeskScreen({Key? key}) : super(key: key);
@@ -66,7 +70,21 @@ class HelpDeskScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // BottomNavigationBar setup
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const DataGraphsScreen()));
+          }
+          if (index == 1) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const OrderUpdatesScreen()));
+          }
+          if (index == 3) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+          }
+        },
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
