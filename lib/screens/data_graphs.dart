@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/screens/help_desk.dart';
 import 'package:luzergia_solar_app/screens/profile.dart';
 
+import 'order_updates.dart';
+
 class DataGraphsScreen extends StatelessWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
 
@@ -46,7 +48,7 @@ class DataGraphsScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           if (index == 1) {
-            MaterialPageRoute(builder: (context) => const OrderUpdates());
+            MaterialPageRoute(builder: (context) => const OrderUpdatesScreen());
           }
           if (index == 2) {
             MaterialPageRoute(builder: (context) => const HelpDeskScreen());

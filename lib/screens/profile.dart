@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                 // Implement logout functionality
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red, // Set the background color
+                backgroundColor: Colors.red, // Set the background color
               ),
               child: const Text('Cerrar sesión'),
             ),
@@ -61,12 +61,16 @@ class ProfileScreen extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.update),
+            label: 'Update',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.phone),
+            label: 'Help desk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
         ],
       ),
