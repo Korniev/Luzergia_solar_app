@@ -54,10 +54,10 @@ class HelpDeskScreen extends StatelessWidget {
                     onPressed: () {
                       // Implement send logic
                     },
-                    child: const Text('Enviar'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green, // set the background color
+                      backgroundColor: Colors.green, // set the background color
                     ),
+                    child: const Text('Enviar'),
                   ),
                 ),
               ],
@@ -72,7 +72,14 @@ class HelpDeskScreen extends StatelessWidget {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          // ... other items
+          BottomNavigationBarItem(
+            icon: Icon(Icons.update),
+            label: 'Update',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.phone),
+            label: 'Help desk',
+          ),
         ],
       ),
     );
