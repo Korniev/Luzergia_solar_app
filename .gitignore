@@ -45,3 +45,4 @@ app.*.map.json
 /windows/
 /linux/
 .idea
+.idea/libraries/Dart_Packages.xml
