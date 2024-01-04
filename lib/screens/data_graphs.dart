@@ -8,71 +8,53 @@ class DataGraphsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Example data for the charts
     final productionData = [
-      LinearSales(0, 100),
-      LinearSales(1, 75),
-      LinearSales(2, 25),
-      LinearSales(3, 5),
+      BarChartGroupData(
+          x: 0, barRods: [BarChartRodData(toY: 100, color: Colors.green)]),
+      BarChartGroupData(
+          x: 1, barRods: [BarChartRodData(toY: 75, color: Colors.green)]),
+      // ... more production data
     ];
 
     final consumptionData = [
-      LinearSales(0, 70),
-      LinearSales(1, 100),
-      LinearSales(2, 50),
-      LinearSales(3, 20),
+      BarChartGroupData(
+          x: 0, barRods: [BarChartRodData(toY: 70, color: Colors.red)]),
+      BarChartGroupData(
+          x: 1, barRods: [BarChartRodData(toY: 100, color: Colors.red)]),
+      // ... more consumption data
     ];
-
-    var series = [
-      charts.Series(
-        id: 'Production',
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: productionData,
-      ),
-      charts.Series(
-        id: 'Consumption',
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: consumptionData,
-      ),
-    ];
-
-    var chart = charts.BarChart(
-      series,
-      animate: true,
-    );
-
-    var chartWidget = Padding(
-      padding: const EdgeInsets.all(32.0),
-      child: SizedBox(
-        height: 200.0,
-        child: chart,
-      ),
-    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Data Graphs'),
-      ),
+      appBar: AppBar(title: const Text('Data Graphs')),
       body: Column(
         children: <Widget>[
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text('Producción'),
-              Text('Consumición'),
-            ],
+          const Text('Producción y Consumición'),
+          Expanded(
+            child: BarChart(
+              BarChartData(
+                barGroups:
+                    productionData, // Use productionData for production chart
+                // Add more chart styling and properties
+              ),
+            ),
           ),
-          chartWidget, // Your chart widget here
+          // Add another BarChart widget for consumption data if needed
           // Other widgets like indicator segment can be added here
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Data',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          // Other bottom navigation bar items...
+          BottomNavigationBarItem(
+            icon: Icon(Icons.update),
+            label: 'Update',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.phone),
+            label: 'Help desk',
+          ),
         ],
       ),
     );
