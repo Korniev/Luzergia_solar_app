@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'data_graphs.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -8,31 +10,26 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          // Wrap with SingleChildScrollView
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Placeholder for the logo
                   Image.asset('lib/images/LOGOTIPO_LUZERGIA.jpg',
                       width: 300.0, height: 300.0),
-                  const SizedBox(
-                      height: 10.0), // Spacing between logo and title
+                  const SizedBox(height: 10.0),
                   Text(
                     'Log in',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  const SizedBox(
-                      height: 8.0), // Spacing between title and subtitle
+                  const SizedBox(height: 8.0),
                   Text(
                     'Por favor, introduzca los datos para iniciar la sesión',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  const SizedBox(
-                      height: 30.0), // Spacing before the text fields
+                  const SizedBox(height: 30.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Email',
@@ -46,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 8.0), // Spacing between text fields
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Password',
@@ -60,11 +57,11 @@ class LoginScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  const SizedBox(
-                      height: 30.0), // Spacing before the login button
+                  const SizedBox(height: 30.0),
                   ElevatedButton(
                     onPressed: () {
-                      // Implement login logic
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const DataGraphsScreen()));
                     },
                     child: const Text('Iniciar sesión'),
                   ),

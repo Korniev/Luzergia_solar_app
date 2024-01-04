@@ -55,6 +55,10 @@ class DataGraphsScreen extends StatelessWidget {
             icon: Icon(Icons.phone),
             label: 'Help desk',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
         ],
       ),
     );
