@@ -11,18 +11,17 @@ class HelpDeskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Make the AppBar transparent
-        elevation: 0, // Remove shadow
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back,
-              color: Colors.white), // Customize color as needed
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         flexibleSpace: Image.asset(
           'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
-          fit: BoxFit.cover, // Cover the entire AppBar area
+          fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,
         ),
