@@ -28,7 +28,12 @@ class DataGraphsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Data Graphs')),
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset('lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg'),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           const Text('Producción y Consumición'),
