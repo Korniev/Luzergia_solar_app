@@ -11,8 +11,21 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
-        centerTitle: true,
+        backgroundColor: Colors.transparent, // Make the AppBar transparent
+        elevation: 0, // Remove shadow
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back,
+              color: Colors.white), // Customize color as needed
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        flexibleSpace: Image.asset(
+          'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
+          fit: BoxFit.cover, // Cover the entire AppBar area
+          height: double.infinity,
+          width: double.infinity,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
