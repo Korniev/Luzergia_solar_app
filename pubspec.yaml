@@ -56,6 +56,7 @@ dev_dependencies:
 flutter:
   assets:
     - lib/images/LOGOTIPO_LUZERGIA.jpg
+    - lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
