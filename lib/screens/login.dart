@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset('lib/images/LOGOTIPO_LUZERGIA.jpg',
+                  Image.asset('lib/images/LOGOTIPO LUZERGIA1.png',
                       width: 300.0, height: 300.0),
                   const SizedBox(height: 10.0),
                   Text(
@@ -32,10 +32,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30.0),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
-                    ),
+                    decoration: InputDecoration(
+                        labelText: 'Email',
+                        prefixIcon: const Icon(Icons.email),
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                        )),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -46,10 +48,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
-                    ),
+                    decoration: InputDecoration(
+                        labelText: 'Password',
+                        prefixIcon: const Icon(Icons.lock),
+                        labelStyle: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyLarge?.color)),
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
