@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/services/navigation_service.dart';
+import 'package:luzergia_solar_app/styles/app_styles.dart';
 
 class HelpDeskScreen extends StatefulWidget {
   const HelpDeskScreen({Key? key}) : super(key: key);
@@ -11,6 +12,10 @@ class HelpDeskScreen extends StatefulWidget {
 class _HelpDeskScreenState extends State<HelpDeskScreen> {
   final int _selectedIndex = 2;
   final NavigationService _navigationService = NavigationService();
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController problemController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,60 +36,69 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
           width: double.infinity,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Nombre y Apellido',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Número de teléfono',
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.phone,
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Cuéntanos tu problema',
-                border: OutlineInputBorder(),
-              ),
-              maxLines: 5,
-            ),
-            const SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Implement cancel logic
-                    },
-                    child: const Text('Cancelar'),
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 20),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Nombre y Apellido',
+                  border: OutlineInputBorder(),
                 ),
-                const SizedBox(width: 16.0),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Implement send logic
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green, // set the background color
+                controller: nameController,
+              ),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Número de teléfono',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.phone,
+                controller: phoneController,
+              ),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Cuéntanos tu problema',
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 5,
+                controller: problemController,
+              ),
+              const SizedBox(height: 16.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        nameController.clear();
+                        phoneController.clear();
+                        problemController.clear();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppStyles.pantone2),
+                      child: const Text('Borrar'),
                     ),
-                    child: const Text('Enviar'),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  const SizedBox(width: 16.0),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Implement send logic
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppStyles.pantone2),
+                      child: const Text('Enviar'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
