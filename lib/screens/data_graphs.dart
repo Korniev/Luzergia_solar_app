@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/services/navigation_service.dart';
+import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
+import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class DataGraphsScreen extends StatefulWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
@@ -15,25 +16,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        flexibleSpace: Image.asset(
-          'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-      ),
-      body: const Column(
-        children: <Widget>[],
-      ),
+      appBar: CustomAppBar(),
+      body: const SingleChildScrollView(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => _navigationService.navigateToScreen(index, context),
