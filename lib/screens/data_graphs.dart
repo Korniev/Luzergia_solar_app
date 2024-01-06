@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/screens/help_desk.dart';
-import 'package:luzergia_solar_app/screens/order_updates.dart';
-import 'package:luzergia_solar_app/screens/profile.dart';
+import 'package:luzergia_solar_app/services/navigation_service.dart';
 
-class DataGraphsScreen extends StatelessWidget {
+class DataGraphsScreen extends StatefulWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DataGraphsScreen> createState() => _DataGraphsScreenState();
+}
+
+class _DataGraphsScreenState extends State<DataGraphsScreen> {
+  final int _selectedIndex = 0;
+  final NavigationService _navigationService = NavigationService();
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +35,8 @@ class DataGraphsScreen extends StatelessWidget {
         children: <Widget>[],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const OrderUpdatesScreen()));
-          }
-          if (index == 2) {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const HelpDeskScreen()));
-          }
-          if (index == 3) {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ProfileScreen()));
-          }
-        },
+        currentIndex: _selectedIndex,
+        onTap: (index) => _navigationService.navigateToScreen(index, context),
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
