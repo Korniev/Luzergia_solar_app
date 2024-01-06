@@ -1,7 +1,9 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/services/navigation_service.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
+import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
+import '../widgets/custom_appbar.dart';
 import 'login.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -18,22 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        flexibleSpace: Image.asset(
-          'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30),
@@ -50,24 +37,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 20),
               TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Nombre y Apellido'),
+                decoration: InputDecoration(
+                    labelText: 'Nombre y Apellido',
+                    labelStyle: TextStyle(
+                        color: Theme.of(context).textTheme.bodyLarge?.color)),
               ),
               const SizedBox(height: 10),
               TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Correo electrónico'),
+                decoration: InputDecoration(
+                    labelText: 'Correo electrónico',
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                    )),
               ),
               const SizedBox(height: 10),
               TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Número de teléfono'),
+                decoration: InputDecoration(
+                    labelText: 'Número de teléfono',
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                    )),
               ),
               const SizedBox(height: 10),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Domicilio'),
+                decoration: InputDecoration(
+                    labelText: 'Domicilio',
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                    )),
               ),
-              const SizedBox(height: 100),
+              const SizedBox(height: 20),
+              SwitchListTile(
+                title: Text(
+                  'Dark Mode',
+                  style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
+                ),
+                value: AdaptiveTheme.of(context).mode.isDark,
+                onChanged: (bool value) {
+                  if (value) {
+                    AdaptiveTheme.of(context).setDark();
+                  } else {
+                    AdaptiveTheme.of(context).setLight();
+                  }
+                },
+              ),
+              const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushAndRemoveUntil(
