@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luzergia_solar_app/styles/app_styles.dart';
 
 import 'data_graphs.dart';
 
@@ -63,6 +64,8 @@ class LoginScreen extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const DataGraphsScreen()));
                     },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppStyles.pantone2),
                     child: const Text('Iniciar sesión'),
                   ),
                 ],

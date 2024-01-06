@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/services/navigation_service.dart';
+import 'package:luzergia_solar_app/styles/app_styles.dart';
+
+import 'login.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -31,48 +34,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
           width: double.infinity,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.grey.shade300,
-              child: Icon(
-                Icons.person,
-                size: 50,
-                color: Colors.grey.shade600,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.grey.shade300,
+                child: Icon(
+                  Icons.person,
+                  size: 50,
+                  color: Colors.grey.shade600,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              decoration: const InputDecoration(labelText: 'Nombre y Apellido'),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration:
-                  const InputDecoration(labelText: 'Correo electrónico'),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration:
-                  const InputDecoration(labelText: 'Número de teléfono'),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(labelText: 'Domicilio'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Implement logout functionality
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Set the background color
+              const SizedBox(height: 20),
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Nombre y Apellido'),
               ),
-              child: const Text('Cerrar sesión'),
-            ),
-          ],
+              const SizedBox(height: 10),
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Correo electrónico'),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Número de teléfono'),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Domicilio'),
+              ),
+              const SizedBox(height: 120),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (Route<dynamic> route) => false,
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        AppStyles.pantone2 // Set the background color
+                    ),
+                child: const Text('Cerrar sesión'),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
