@@ -1,32 +1,13 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/screens/help_desk.dart';
+import 'package:luzergia_solar_app/screens/order_updates.dart';
 import 'package:luzergia_solar_app/screens/profile.dart';
-
-import 'order_updates.dart';
 
 class DataGraphsScreen extends StatelessWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Example data for the charts
-    final productionData = [
-      BarChartGroupData(
-          x: 0, barRods: [BarChartRodData(toY: 100, color: Colors.green)]),
-      BarChartGroupData(
-          x: 1, barRods: [BarChartRodData(toY: 75, color: Colors.green)]),
-      // ... more production data
-    ];
-
-    final consumptionData = [
-      BarChartGroupData(
-          x: 0, barRods: [BarChartRodData(toY: 70, color: Colors.red)]),
-      BarChartGroupData(
-          x: 1, barRods: [BarChartRodData(toY: 100, color: Colors.red)]),
-      // ... more consumption data
-    ];
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -44,21 +25,8 @@ class DataGraphsScreen extends StatelessWidget {
           width: double.infinity,
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          const Text('Producción y Consumición'),
-          Expanded(
-            child: BarChart(
-              BarChartData(
-                barGroups:
-                    productionData, // Use productionData for production chart
-                // Add more chart styling and properties
-              ),
-            ),
-          ),
-          // Add another BarChart widget for consumption data if needed
-          // Other widgets like indicator segment can be added here
-        ],
+      body: const Column(
+        children: <Widget>[],
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
@@ -97,11 +65,4 @@ class DataGraphsScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class LinearSales {
-  final int year;
-  final int sales;
-
-  LinearSales(this.year, this.sales);
 }
