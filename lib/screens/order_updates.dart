@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/services/navigation_service.dart';
+import 'package:luzergia_solar_app/styles/app_styles.dart';
+import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
+import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class OrderUpdatesScreen extends StatefulWidget {
   const OrderUpdatesScreen({Key? key}) : super(key: key);
@@ -15,22 +17,7 @@ class _OrderUpdatesScreenState extends State<OrderUpdatesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        flexibleSpace: Image.asset(
-          'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-      ),
+      appBar: CustomAppBar(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
         children: [
@@ -102,11 +89,17 @@ class UpdateTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: isActive ? Colors.green : Colors.grey,
+        backgroundColor: isActive ? AppStyles.pantone2 : Colors.grey,
         child: Icon(iconData, color: isActive ? Colors.white : Colors.black),
       ),
-      title: Text(title),
-      trailing: isActive ? const Icon(Icons.check, color: Colors.green) : null,
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Theme.of(context).textTheme.bodyLarge?.color,
+        ),
+      ),
+      trailing:
+          isActive ? const Icon(Icons.check, color: AppStyles.pantone2) : null,
     );
   }
 }
