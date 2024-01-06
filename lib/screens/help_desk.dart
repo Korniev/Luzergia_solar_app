@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/services/navigation_service.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
+import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
+import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class HelpDeskScreen extends StatefulWidget {
   const HelpDeskScreen({Key? key}) : super(key: key);
@@ -20,22 +21,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppStyles.white),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        flexibleSpace: Image.asset(
-          'lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg',
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -44,26 +30,35 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
             children: [
               const SizedBox(height: 20),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Nombre y Apellido',
-                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
+                  border: const OutlineInputBorder(),
                 ),
                 controller: nameController,
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Número de teléfono',
-                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
+                  border: const OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.phone,
                 controller: phoneController,
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Cuéntanos tu problema',
-                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
+                  border: const OutlineInputBorder(),
                 ),
                 maxLines: 5,
                 controller: problemController,
