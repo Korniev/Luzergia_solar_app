@@ -17,7 +17,7 @@ class _OrderUpdatesScreenState extends State<OrderUpdatesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
         children: [

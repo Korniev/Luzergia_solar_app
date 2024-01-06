@@ -16,7 +16,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: const SingleChildScrollView(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
