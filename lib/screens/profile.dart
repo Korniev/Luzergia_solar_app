@@ -36,12 +36,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(30),
           child: Column(
             children: [
               CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.grey.shade300,
+                radius: 60,
+                backgroundColor: AppStyles.ashGrey,
                 child: Icon(
                   Icons.person,
                   size: 50,
@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Domicilio'),
               ),
-              const SizedBox(height: 120),
+              const SizedBox(height: 100),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushAndRemoveUntil(
@@ -77,9 +77,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        AppStyles.pantone2 // Set the background color
-                    ),
+                    backgroundColor: AppStyles.pantone2,
+                    foregroundColor: AppStyles.pantone1),
                 child: const Text('Cerrar sesión'),
               ),
             ],

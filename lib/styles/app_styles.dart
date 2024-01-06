@@ -10,4 +10,5 @@ class AppStyles {
   static const Color mindAro = Color(0xFFEDF67D);
   static const Color mintGreen = Color(0xFFD7FDEC);
   static const Color celticBlue = Color(0xFF226CE0);
+  static const Color ashGrey = Color(0xFFB3BFB8);
 }

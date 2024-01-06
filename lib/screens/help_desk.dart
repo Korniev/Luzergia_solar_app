@@ -24,7 +24,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: AppStyles.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -80,7 +80,8 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                         problemController.clear();
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: AppStyles.pantone2),
+                          backgroundColor: AppStyles.pantone2,
+                          foregroundColor: AppStyles.pantone1),
                       child: const Text('Borrar'),
                     ),
                   ),
@@ -91,7 +92,8 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                         // Implement send logic
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: AppStyles.pantone2),
+                          backgroundColor: AppStyles.pantone2,
+                          foregroundColor: AppStyles.pantone1),
                       child: const Text('Enviar'),
                     ),
                   ),

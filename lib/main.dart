@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.montserratTextTheme(),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: AppStyles.pantone2,
-            selectedItemColor: AppStyles.pantone5,
+            selectedItemColor: AppStyles.celticBlue,
             unselectedItemColor: AppStyles.pantone1,
             showSelectedLabels: true,
             showUnselectedLabels: false,
