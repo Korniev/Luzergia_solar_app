@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fl_chart: ^0.66.0
   google_fonts: ^6.1.0
+  adaptive_theme: ^3.5.0
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +57,9 @@ dev_dependencies:
 flutter:
   assets:
     - lib/images/LOGOTIPO_LUZERGIA.jpg
+    - lib/images/LOGOTIPO LUZERGIA1.png
     - lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg
+    - lib/images/LOGOTIPO_LUZERGIA_horizontal_dark.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
