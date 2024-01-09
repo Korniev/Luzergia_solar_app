@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
+import 'package:luzergia_solar_app/widgets/line_chart.dart';
 
 class DataGraphsScreen extends StatefulWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
@@ -17,7 +18,13 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: const SingleChildScrollView(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            LineChartSample6(),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => _navigationService.navigateToScreen(index, context),
