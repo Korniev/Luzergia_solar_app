@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luzergia_solar_app/screens/pie_chart.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 import 'package:luzergia_solar_app/widgets/line_chart.dart';
@@ -22,6 +23,10 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
         child: Column(
           children: [
             LineChartSample6(),
+            const SizedBox(
+              height: 20,
+            ),
+            const PieChartSample2(),
           ],
         ),
       ),
