@@ -23,9 +23,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
         child: Column(
           children: [
             LineChartSample6(),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             const PieChartSample2(),
           ],
         ),
