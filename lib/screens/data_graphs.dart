@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/screens/pie_chart.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 import 'package:luzergia_solar_app/widgets/line_chart.dart';
+import 'package:luzergia_solar_app/widgets/pie_chart.dart';
 
 class DataGraphsScreen extends StatefulWidget {
   const DataGraphsScreen({Key? key}) : super(key: key);
@@ -22,8 +22,9 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 10),
             LineChartSample6(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 120),
             const PieChartSample2(),
           ],
         ),
