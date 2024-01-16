@@ -38,6 +38,7 @@ dependencies:
   fl_chart: ^0.66.0
   google_fonts: ^6.1.0
   adaptive_theme: ^3.5.0
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:
