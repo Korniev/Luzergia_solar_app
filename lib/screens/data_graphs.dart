@@ -44,31 +44,34 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: fetchData(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  var data = snapshot.data as List<dynamic>;
-                  return ListView.builder(
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(data[index]['title']),
-                      );
-                    },
-                  );
-                }
-              },
-            ),
-            const SizedBox(height: 120),
-            const PieChartSample2(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              FutureBuilder(
+                future: fetchData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    var data = snapshot.data as List<dynamic>;
+                    return ListView.builder(
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(data[index]['title']),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 120),
+              const PieChartSample2(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
