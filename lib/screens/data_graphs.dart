@@ -34,8 +34,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      debugPrint("Помилка запиту: ${response.statusCode}");
-      throw Exception('Помилка запиту: ${response.statusCode}');
+      debugPrint("Error request: ${response.statusCode}");
+      throw Exception('Error request: ${response.statusCode}');
     }
   }
 
@@ -52,16 +52,14 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 } else if (snapshot.hasError) {
-                  return Text('Помилка: ${snapshot.error}');
+                  return Text('Error: ${snapshot.error}');
                 } else {
-                  // Тут ви використовуєте дані з відповіді API
-                  // Припустимо, ви отримали масив даних і хочете відобразити їх у вигляді списку
                   var data = snapshot.data as List<dynamic>;
                   return ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(data[index]['title']), // Наприклад
+                        title: Text(data[index]['title']),
                       );
                     },
                   );
