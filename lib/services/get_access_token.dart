@@ -29,6 +29,6 @@ Future<String> getAccessToken() async {
     return accessToken;
   } else {
     throw Exception(
-        'No hemos podido obtener access token: ${response.statusCode}');
+        'Lo siento, no hemos podido obtener access token: ${response.statusCode}');
   }
 }
