@@ -15,6 +15,8 @@ class AppStyles {
   static const Color dark = Color(0xFF312F2F);
   static const Color black = Color(0xFF000103);
 
+  static const mediumText = TextStyle(fontSize: 18);
+
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.white,
