@@ -4,7 +4,7 @@ import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class HelpDeskScreen extends StatefulWidget {
-  const HelpDeskScreen({Key? key}) : super(key: key);
+  const HelpDeskScreen({super.key});
 
   @override
   State<HelpDeskScreen> createState() => _HelpDeskScreenState();

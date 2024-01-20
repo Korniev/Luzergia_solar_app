@@ -3,7 +3,7 @@ import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class DataGraphsScreen extends StatefulWidget {
-  const DataGraphsScreen({Key? key}) : super(key: key);
+  const DataGraphsScreen({super.key});
 
   @override
   State<DataGraphsScreen> createState() => _DataGraphsScreenState();

@@ -4,7 +4,7 @@ import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'data_graphs.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

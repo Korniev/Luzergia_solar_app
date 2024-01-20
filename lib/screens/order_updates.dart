@@ -4,7 +4,7 @@ import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 class OrderUpdatesScreen extends StatefulWidget {
-  const OrderUpdatesScreen({Key? key}) : super(key: key);
+  const OrderUpdatesScreen({super.key});
 
   @override
   State<OrderUpdatesScreen> createState() => _OrderUpdatesScreenState();
@@ -79,11 +79,11 @@ class UpdateTile extends StatelessWidget {
   final bool isActive;
 
   const UpdateTile({
-    Key? key,
+    super.key,
     required this.iconData,
     required this.title,
     this.isActive = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
