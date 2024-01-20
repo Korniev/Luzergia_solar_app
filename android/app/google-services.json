@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "131405688180",
+    "project_id": "luzergia-solar-app",
+    "storage_bucket": "luzergia-solar-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131405688180:android:01edbea4faacc53dfd5021",
+        "android_client_info": {
+          "package_name": "com.example.luzergia_solar_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0PP-b-IqI2ZZQ-yvUWQPzupv7atXqnyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
