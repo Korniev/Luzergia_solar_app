@@ -38,9 +38,18 @@ class _SplashState extends State<Splash> {
   }
 
   Future<void> init() async {
-    await Future.delayed(const Duration(microseconds: 500));
-    status = "Cargando 50%";
-    setState(() {});
+    await Future.delayed(const Duration(seconds: 1));
+    if (mounted) {
+      setState(() {
+        status = "Cargando 25%";
+      });
+    }
+    await Future.delayed(const Duration(seconds: 1));
+    if (mounted) {
+      setState(() {
+        status = "Cargando 50%";
+      });
+    }
 
     if (FirebaseAuth.instance.currentUser == null) {
       final providers = [EmailAuthProvider()];
@@ -77,8 +86,11 @@ class _SplashState extends State<Splash> {
       }
     }
 
-    await Future.delayed(const Duration(microseconds: 500));
-    status = "Cargando 100%";
-    setState(() {});
+    await Future.delayed(const Duration(seconds: 1));
+    if (mounted) {
+      setState(() {
+        status = "Cargando 100%";
+      });
+    }
   }
 }
