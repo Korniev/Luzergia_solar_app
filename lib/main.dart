@@ -1,6 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:luzergia_solar_app/screens/login.dart';
+import 'package:luzergia_solar_app/screens/splash.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 
 void main() async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'Luzergia solar app',
         theme: theme,
         darkTheme: darkTheme,
-        home: const LoginScreen(),
+        home: const Splash(),
       ),
     );
   }
