@@ -1,7 +1,9 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/screens/data_graphs.dart';
+import 'package:luzergia_solar_app/styles/app_styles.dart';
 
 import '../widgets/custom_header.dart';
 
@@ -23,6 +25,9 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDarkTheme =
+        AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark;
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -31,7 +36,11 @@ class _SplashState extends State<Splash> {
             Image.asset('lib/images/logotipo_alterna.png',
                 width: 400.0, height: 400.0),
             const SizedBox(height: 2, width: 2),
-            Text(status),
+            Text(
+              status,
+              style: TextStyle(
+                  color: isDarkTheme ? AppStyles.white : AppStyles.black),
+            ),
           ],
         ),
       ),
@@ -65,14 +74,12 @@ class _SplashState extends State<Splash> {
               providers: providers,
               actions: [
                 AuthStateChangeAction<SignedIn>((context, state) {
-                  //Goto to Home
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const DataGraphsScreen()));
                 }),
                 AuthStateChangeAction<UserCreated>((context, state) {
-                  //Goto to Home
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
