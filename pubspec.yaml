@@ -64,6 +64,7 @@ flutter:
     - lib/images/LOGOTIPO LUZERGIA1.png
     - lib/images/LOGOTIPO_LUZERGIA_horizontal.jpg
     - lib/images/LOGOTIPO_LUZERGIA_horizontal_dark.jpg
+    - lib/images/logotipo_alterna.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
