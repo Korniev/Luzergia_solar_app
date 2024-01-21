@@ -15,14 +15,17 @@ class AppStyles {
   static const Color dark = Color(0xFF312F2F);
   static const Color black = Color(0xFF000103);
 
-  static const mediumText = TextStyle(fontSize: 16);
+  //static const mediumText = TextStyle(fontSize: 16);
 
   static final ThemeData lightTheme = ThemeData(
+    appBarTheme: const AppBarTheme(
+      color: AppStyles.white,
+    ),
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.white,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
         bodyLarge: const TextStyle(
-      fontSize: 18,
+      fontSize: 16,
       color: AppStyles.black,
     )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -35,11 +38,12 @@ class AppStyles {
   );
 
   static final ThemeData darkTheme = ThemeData(
+    appBarTheme: const AppBarTheme(color: AppStyles.dark),
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.dark,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
         bodyLarge: const TextStyle(
-      fontSize: 18,
+      fontSize: 16,
       color: AppStyles.white,
     )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
