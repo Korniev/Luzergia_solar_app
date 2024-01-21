@@ -12,13 +12,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: isDarkTheme ? AppStyles.dark : AppStyles.white,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back,
-            color: isDarkTheme ? AppStyles.white : AppStyles.black),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
       titleSpacing: 0,
       flexibleSpace: Padding(
         padding: const EdgeInsets.only(top: 20.0),
