@@ -4,7 +4,6 @@ import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/energy_provider.dart';
-import '../widgets/energy_info.dart';
 
 class DataGraphsScreen extends StatefulWidget {
   const DataGraphsScreen({super.key});
@@ -42,44 +41,57 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
         children: <Widget>[
-          Expanded(
+          Positioned(
+            top: 40,
+            left: 50,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                EnergyInfo(
-                    icon: Icons.flash_on,
-                    label: 'Imported',
-                    value: '$imported '),
-                EnergyInfo(
-                    icon: Icons.wb_sunny,
-                    label: 'Produced',
-                    value: '$produced '),
+                Image.asset('lib/images/icono_luzergia_red.png',
+                    width: 100.0, height: 100.0),
+                Text('Importado:\n   $imported ',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               ],
             ),
           ),
-          CircleAvatar(
-            radius: 48,
-            backgroundColor: Colors.orange,
-            child:
-                Text('$consumed ', style: const TextStyle(color: Colors.white)),
-          ),
-          Expanded(
+          Positioned(
+            top: 40,
+            right: 50,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                EnergyInfo(
-                    icon: Icons.home, label: 'Consumed', value: '$consumed '),
-                EnergyInfo(
-                    icon: Icons.flash_off,
-                    label: 'Exported',
-                    value: '$exported '),
+                Image.asset('lib/images/icono_luzergia_sol.png',
+                    width: 100.0, height: 100.0),
+                Text('Producido:\n   $produced ',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               ],
             ),
           ),
+          Positioned(
+            top: 250,
+            right: 150,
+            child: Column(
+              children: [
+                Image.asset('lib/images/icono_luzergia_home.png',
+                    width: 100.0, height: 100.0),
+                Text('Consumido:\n    $consumed ',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 150,
+            child: Column(
+              children: [
+                Image.asset('lib/images/icono_luzergia_red.png',
+                    width: 100.0, height: 100.0),
+                Text('Exportado:\n   $exported ',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
+              ],
+            ),
+          ),
+          // Тут додайте інші `Positioned` віджети для розміщення інших елементів
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
