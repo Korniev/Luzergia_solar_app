@@ -1,10 +1,13 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 import '../widgets/custom_appbar.dart';
-import 'login.dart';
+import '../widgets/custom_header.dart';
+import 'data_graphs.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -85,17 +88,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
-                    (Route<dynamic> route) => false,
-                  );
+                onPressed: () async {
+                  final contextCopy = context;
+                  await FirebaseAuth.instance.signOut();
+
+                  if (mounted) {
+                    Navigator.of(contextCopy).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => SignInScreen(
+                          headerBuilder: (context, constraints, _) {
+                            return const CustomHeader();
+                          },
+                          providers: [EmailAuthProvider()],
+                          actions: [
+                            AuthStateChangeAction<SignedIn>((context, state) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const DataGraphsScreen()));
+                            }),
+                            AuthStateChangeAction<UserCreated>(
+                                (context, state) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const DataGraphsScreen()));
+                            }),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppStyles.pantone2,
                     foregroundColor: AppStyles.pantone1),
-                child: const Text('Cerrar sesión'),
+                child: const Text(
+                  'Cerrar sesión',
+                  style: AppStyles.mediumText,
+                ),
               ),
             ],
           ),
