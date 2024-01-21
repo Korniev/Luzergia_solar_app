@@ -25,9 +25,13 @@ class AppStyles {
     scaffoldBackgroundColor: AppStyles.white,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
         bodyLarge: const TextStyle(
-      fontSize: 16,
-      color: AppStyles.black,
-    )),
+          fontSize: 16,
+          color: AppStyles.black,
+        ),
+        bodyMedium: const TextStyle(
+          fontSize: 16,
+          color: AppStyles.black,
+        )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.pantone2,
       selectedItemColor: AppStyles.mindAro,
@@ -43,9 +47,10 @@ class AppStyles {
     scaffoldBackgroundColor: AppStyles.dark,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
         bodyLarge: const TextStyle(
-      fontSize: 16,
-      color: AppStyles.white,
-    )),
+          fontSize: 16,
+          color: AppStyles.white,
+        ),
+        bodyMedium: const TextStyle(fontSize: 16, color: AppStyles.white)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.black,
       selectedItemColor: AppStyles.mindAro,
