@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:luzergia_solar_app/widgets/arrow_painter.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
@@ -39,6 +40,11 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     final exported = energyData.energyTotal.isNotEmpty
         ? energyData.energyTotal.first.exported
         : '0.0';
+    String dateTimeDisplay = "";
+    if (energyData.energyTotal.isNotEmpty) {
+      DateTime dateTime = energyData.energyTotal.first.dateTime;
+      dateTimeDisplay = DateFormat('dd-MM-yyyy – kk:mm').format(dateTime);
+    }
 
     final Size screenSize = MediaQuery.of(context).size;
     const double iconSize = 100.0;
@@ -48,98 +54,125 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     final double screenHeight = screenSize.height;
 
     const Offset startArrow1 =
-        Offset(50 + iconSize / 2, 40 + iconSize + textHeight);
+        Offset(50 + iconSize / 2, 18 + iconSize + textHeight);
     final Offset endArrow1 =
-        Offset(screenWidth - 200 - iconSize / 2, 250 + iconSize / 2);
+        Offset(screenWidth - 200 - iconSize / 2, 230 + iconSize / 2);
     final Offset cornerArrow1 = Offset(startArrow1.dx, endArrow1.dy);
 
     final Offset startArrow2 =
-        Offset(screenWidth - 50 - iconSize / 2, 40 + iconSize + textHeight);
+        Offset(screenWidth - 50 - iconSize / 2, 18 + iconSize + textHeight);
     final Offset endArrow2 =
-        Offset(screenWidth - 100 - iconSize / 2, 250 + iconSize / 2);
+        Offset(screenWidth - 100 - iconSize / 2, 230 + iconSize / 2);
     final Offset cornerArrow2 = Offset(startArrow2.dx, endArrow2.dy);
 
     final Offset startArrow3 =
-        Offset(screenWidth - 150 - iconSize / 2, 250 + iconSize + textHeight);
+        Offset(screenWidth - 150 - iconSize / 2, 230 + iconSize + textHeight);
     final Offset endArrow3 = Offset(
-        screenWidth - 150 - iconSize / 2, screenHeight - 252 - iconSize / 2);
+        screenWidth - 150 - iconSize / 2, screenHeight - 290 - iconSize / 2);
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-            top: 40,
-            left: 50,
-            child: Column(
-              children: [
-                Image.asset('lib/images/icono_luzergia_red.png',
-                    width: 100.0, height: 100.0),
-                Text('Importado:\n   $imported ',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 40,
-            right: 50,
-            child: Column(
-              children: [
-                Image.asset('lib/images/icono_luzergia_sol.png',
-                    width: 100.0, height: 100.0),
-                Text('Producido:\n   $produced ',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 250,
-            right: 150,
-            child: Column(
-              children: [
-                Image.asset('lib/images/icono_luzergia_home.png',
-                    width: 100.0, height: 100.0),
-                Text('Consumido:\n    $consumed ',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 20,
-            right: 150,
-            child: Column(
-              children: [
-                Image.asset('lib/images/icono_luzergia_red.png',
-                    width: 100.0, height: 100.0),
-                Text('Exportado:\n   $exported ',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-              ],
-            ),
-          ),
-          Positioned.fill(
-            child: CustomPaint(
-              painter: ArrowPainter(
-                start: startArrow1,
-                end: endArrow1,
-                corner: cornerArrow1,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Center(
+              child: Text(
+                dateTimeDisplay,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ),
-          Positioned.fill(
-            child: CustomPaint(
-              painter: ArrowPainter(
-                start: startArrow2,
-                end: endArrow2,
-                corner: cornerArrow2,
-              ),
+          Expanded(
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: 15,
+                  left: 50,
+                  child: Column(
+                    children: [
+                      Image.asset('lib/images/icono_luzergia_red.png',
+                          width: 100.0, height: 100.0),
+                      Text('Importado:\n   $imported ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 15,
+                  right: 50,
+                  child: Column(
+                    children: [
+                      Image.asset('lib/images/icono_luzergia_sol.png',
+                          width: 100.0, height: 100.0),
+                      Text('Producido:\n   $produced ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 230,
+                  right: 150,
+                  child: Column(
+                    children: [
+                      Image.asset('lib/images/icono_luzergia_home.png',
+                          width: 100.0, height: 100.0),
+                      Text('Consumido:\n    $consumed ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  right: 150,
+                  child: Column(
+                    children: [
+                      Image.asset('lib/images/icono_luzergia_red.png',
+                          width: 100.0, height: 100.0),
+                      Text('Exportado:\n   $exported ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ],
+                  ),
+                ),
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: ArrowPainter(
+                      start: startArrow1,
+                      end: endArrow1,
+                      corner: cornerArrow1,
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: ArrowPainter(
+                      start: startArrow2,
+                      end: endArrow2,
+                      corner: cornerArrow2,
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: ArrowPainter(start: startArrow3, end: endArrow3),
+                  ),
+                ),
+                // Тут додайте інші `Positioned` віджети для розміщення інших елементів
+              ],
             ),
           ),
-          Positioned.fill(
-            child: CustomPaint(
-              painter: ArrowPainter(start: startArrow3, end: endArrow3),
-            ),
-          ),
-          // Тут додайте інші `Positioned` віджети для розміщення інших елементів
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
