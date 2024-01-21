@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luzergia_solar_app/widgets/arrow_painter.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +39,30 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     final exported = energyData.energyTotal.isNotEmpty
         ? energyData.energyTotal.first.exported
         : '0.0';
+
+    final Size screenSize = MediaQuery.of(context).size;
+    const double iconSize = 100.0;
+    const double textHeight = 50.0;
+
+    final double screenWidth = screenSize.width;
+    final double screenHeight = screenSize.height;
+
+    const Offset startArrow1 =
+        Offset(50 + iconSize / 2, 40 + iconSize + textHeight);
+    final Offset endArrow1 =
+        Offset(screenWidth - 200 - iconSize / 2, 250 + iconSize / 2);
+    final Offset cornerArrow1 = Offset(startArrow1.dx, endArrow1.dy);
+
+    final Offset startArrow2 =
+        Offset(screenWidth - 50 - iconSize / 2, 40 + iconSize + textHeight);
+    final Offset endArrow2 =
+        Offset(screenWidth - 100 - iconSize / 2, 250 + iconSize / 2);
+    final Offset cornerArrow2 = Offset(startArrow2.dx, endArrow2.dy);
+
+    final Offset startArrow3 =
+        Offset(screenWidth - 150 - iconSize / 2, 250 + iconSize + textHeight);
+    final Offset endArrow3 = Offset(
+        screenWidth - 150 - iconSize / 2, screenHeight - 252 - iconSize / 2);
 
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -89,6 +114,29 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                 Text('Exportado:\n   $exported ',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               ],
+            ),
+          ),
+          Positioned.fill(
+            child: CustomPaint(
+              painter: ArrowPainter(
+                start: startArrow1,
+                end: endArrow1,
+                corner: cornerArrow1,
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: CustomPaint(
+              painter: ArrowPainter(
+                start: startArrow2,
+                end: endArrow2,
+                corner: cornerArrow2,
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: CustomPaint(
+              painter: ArrowPainter(start: startArrow3, end: endArrow3),
             ),
           ),
           // Тут додайте інші `Positioned` віджети для розміщення інших елементів
