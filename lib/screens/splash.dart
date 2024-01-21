@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/screens/data_graphs.dart';
-import 'package:luzergia_solar_app/styles/app_styles.dart';
+
+import '../widgets/custom_header.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -27,10 +28,10 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('lib/images/LOGOTIPO LUZERGIA1.png',
-                width: 300.0, height: 300.0),
+            Image.asset('lib/images/logotipo_alterna.png',
+                width: 400.0, height: 400.0),
             const SizedBox(height: 2, width: 2),
-            Text(status, style: AppStyles.mediumText),
+            Text(status),
           ],
         ),
       ),
@@ -58,6 +59,9 @@ class _SplashState extends State<Splash> {
           context,
           MaterialPageRoute(
             builder: (context) => SignInScreen(
+              headerBuilder: (context, constraints, _) {
+                return const CustomHeader();
+              },
               providers: providers,
               actions: [
                 AuthStateChangeAction<SignedIn>((context, state) {
