@@ -77,7 +77,10 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: AppStyles.pantone2,
                           foregroundColor: AppStyles.pantone1),
-                      child: const Text('Borrar'),
+                      child: const Text(
+                        'Borrar',
+                        style: AppStyles.mediumText,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 16.0),
@@ -89,7 +92,10 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: AppStyles.pantone2,
                           foregroundColor: AppStyles.pantone1),
-                      child: const Text('Enviar'),
+                      child: const Text(
+                        'Enviar',
+                        style: AppStyles.mediumText,
+                      ),
                     ),
                   ),
                 ],
