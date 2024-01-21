@@ -22,7 +22,7 @@ class _OrderUpdatesScreenState extends State<OrderUpdatesScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
         children: [
           Text('Aquí tienes todas tus actualizaciones',
-              style: Theme.of(context).textTheme.titleLarge),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
           const SizedBox(height: 24.0),
           const UpdateTile(
             iconData: Icons.shopping_cart,

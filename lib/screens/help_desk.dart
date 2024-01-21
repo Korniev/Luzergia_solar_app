@@ -69,34 +69,34 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
-                        nameController.clear();
-                        phoneController.clear();
-                        problemController.clear();
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppStyles.pantone2,
-                          foregroundColor: AppStyles.pantone1),
-                      child: const Text(
-                        'Borrar',
-                        style: AppStyles.mediumText,
-                      ),
-                    ),
+                        onPressed: () {
+                          nameController.clear();
+                          phoneController.clear();
+                          problemController.clear();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppStyles.pantone2,
+                            foregroundColor: AppStyles.pantone1),
+                        child: Text('Borrar',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith())),
                   ),
                   const SizedBox(width: 16.0),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Implement send logic
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppStyles.pantone2,
-                          foregroundColor: AppStyles.pantone1),
-                      child: const Text(
-                        'Enviar',
-                        style: AppStyles.mediumText,
-                      ),
-                    ),
+                        onPressed: () {
+                          // Implement send logic
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppStyles.pantone2,
+                            foregroundColor: AppStyles.pantone1),
+                        child: Text('Enviar',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith())),
                   ),
                 ],
               ),

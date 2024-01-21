@@ -125,10 +125,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppStyles.pantone2,
                     foregroundColor: AppStyles.pantone1),
-                child: const Text(
-                  'Cerrar sesión',
-                  style: AppStyles.mediumText,
-                ),
+                child: Text('Cerrar sesión',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               ),
             ],
           ),
