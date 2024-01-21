@@ -15,15 +15,16 @@ class AppStyles {
   static const Color dark = Color(0xFF312F2F);
   static const Color black = Color(0xFF000103);
 
-  static const mediumText = TextStyle(fontSize: 18);
+  static const mediumText = TextStyle(fontSize: 16);
 
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.white,
-    textTheme: GoogleFonts.montserratTextTheme().apply(
-      bodyColor: AppStyles.black,
-      displayColor: AppStyles.black,
-    ),
+    textTheme: GoogleFonts.montserratTextTheme().copyWith(
+        bodyLarge: const TextStyle(
+      fontSize: 18,
+      color: AppStyles.black,
+    )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.pantone2,
       selectedItemColor: AppStyles.mindAro,
@@ -36,10 +37,11 @@ class AppStyles {
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.dark,
-    textTheme: GoogleFonts.montserratTextTheme().apply(
-      bodyColor: AppStyles.white,
-      displayColor: AppStyles.white,
-    ),
+    textTheme: GoogleFonts.montserratTextTheme().copyWith(
+        bodyLarge: const TextStyle(
+      fontSize: 18,
+      color: AppStyles.white,
+    )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.black,
       selectedItemColor: AppStyles.mindAro,
