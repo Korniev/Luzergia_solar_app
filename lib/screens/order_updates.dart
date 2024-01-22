@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
@@ -18,33 +19,52 @@ class _OrderUpdatesScreenState extends State<OrderUpdatesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
-        children: [
-          Text('Aquí tienes todas tus actualizaciones',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-          const SizedBox(height: 24.0),
-          const UpdateTile(
-            iconData: Icons.shopping_cart,
-            title: 'Pedido realizado',
-            isActive: true,
-          ),
-          const UpdateTile(
-            iconData: Icons.mail,
-            title: 'Correo de confirmación enviado',
-            isActive: true,
-          ),
-          const UpdateTile(
-            iconData: Icons.local_shipping,
-            title: 'Pedido en camino',
-            isActive: false,
-          ),
-          const UpdateTile(
-            iconData: Icons.home,
-            title: 'Pedido entregado',
-            isActive: false,
-          ),
-        ],
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('orderUpdates')
+            .doc('orderUpdated')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (!snapshot.hasData || snapshot.data!.data() == null) {
+            return const Center(child: Text('No data disponible'));
+          }
+
+          var updateData = snapshot.data!.data() as Map<String, dynamic>;
+
+          return ListView(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
+            children: [
+              Text('Aquí tienes todas tus actualizaciones',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
+              const SizedBox(height: 24.0),
+              UpdateTile(
+                iconData: Icons.shopping_cart,
+                title: 'Pedido realizado',
+                isActive: updateData['pedidoRealizado'] ?? false,
+              ),
+              UpdateTile(
+                iconData: Icons.mail,
+                title: 'Correo de confirmación enviado',
+                isActive: updateData['correoConfirmacionEnviado'] ?? false,
+              ),
+              UpdateTile(
+                iconData: Icons.local_shipping,
+                title: 'Pedido en camino',
+                isActive: updateData['pedidoEnCamino'] ?? false,
+              ),
+              UpdateTile(
+                iconData: Icons.home,
+                title: 'Pedido entregado',
+                isActive: updateData['pedidoEntregado'] ?? false,
+              ),
+            ],
+          );
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
