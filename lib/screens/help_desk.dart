@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
@@ -17,6 +18,47 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController problemController = TextEditingController();
+
+  void sendSupportRequest() async {
+    final String name = nameController.text;
+    final String phone = phoneController.text;
+    final String problem = problemController.text;
+
+    if (name.isEmpty || phone.isEmpty || problem.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Todos los campos son necesarios para rellenar')),
+      );
+      return;
+    }
+
+    try {
+      await FirebaseFirestore.instance.collection('email').add({
+        'to': 'Jman-sorokolet@ukr.net',
+        'message': {
+          'subject': 'New Support Request',
+          'html': 'Name: $name<br>Phone: $phone<br>Problem: $problem',
+        },
+      });
+      if (!mounted) return;
+
+      nameController.clear();
+      phoneController.clear();
+      problemController.clear();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Solicitud de asistencia enviada correctamente')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content:
+                Text('No se ha podido enviar la solicitud de asistencia: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,9 +128,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                   const SizedBox(width: 16.0),
                   Expanded(
                     child: ElevatedButton(
-                        onPressed: () {
-                          // Implement send logic
-                        },
+                        onPressed: sendSupportRequest,
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppStyles.pantone2,
                             foregroundColor: AppStyles.pantone1),
