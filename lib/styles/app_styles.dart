@@ -22,15 +22,52 @@ class AppStyles {
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.white,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
-        bodyLarge: GoogleFonts.montserratTextTheme()
-            .bodyLarge
-            ?.copyWith(color: Colors.white),
-        bodyMedium: GoogleFonts.montserratTextTheme()
-            .bodyMedium
-            ?.copyWith(color: Colors.white),
-        bodySmall: GoogleFonts.montserratTextTheme()
-            .bodySmall
-            ?.copyWith(color: Colors.white)),
+      bodyLarge: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: AppStyles.black),
+      bodyMedium: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: AppStyles.black),
+      bodySmall: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: AppStyles.black),
+      titleLarge: GoogleFonts.montserratTextTheme()
+          .titleLarge
+          ?.copyWith(color: AppStyles.black),
+      titleMedium: GoogleFonts.montserratTextTheme()
+          .titleMedium
+          ?.copyWith(color: AppStyles.black),
+      titleSmall: GoogleFonts.montserratTextTheme()
+          .titleSmall
+          ?.copyWith(color: AppStyles.black),
+      labelLarge: GoogleFonts.montserratTextTheme()
+          .labelLarge
+          ?.copyWith(color: AppStyles.black),
+      labelMedium: GoogleFonts.montserratTextTheme()
+          .labelMedium
+          ?.copyWith(color: AppStyles.black),
+      labelSmall: GoogleFonts.montserratTextTheme()
+          .labelLarge
+          ?.copyWith(color: AppStyles.black),
+      displayLarge: GoogleFonts.montserratTextTheme()
+          .displayLarge
+          ?.copyWith(color: AppStyles.black),
+      displayMedium: GoogleFonts.montserratTextTheme()
+          .displayMedium
+          ?.copyWith(color: AppStyles.black),
+      displaySmall: GoogleFonts.montserratTextTheme()
+          .displaySmall
+          ?.copyWith(color: AppStyles.black),
+      headlineLarge: GoogleFonts.montserratTextTheme()
+          .headlineLarge
+          ?.copyWith(color: AppStyles.black),
+      headlineMedium: GoogleFonts.montserratTextTheme()
+          .headlineMedium
+          ?.copyWith(color: AppStyles.black),
+      headlineSmall: GoogleFonts.montserratTextTheme()
+          .headlineSmall
+          ?.copyWith(color: AppStyles.black),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.pantone2,
       selectedItemColor: AppStyles.mindAro,
