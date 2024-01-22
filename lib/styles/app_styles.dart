@@ -15,8 +15,6 @@ class AppStyles {
   static const Color dark = Color(0xFF312F2F);
   static const Color black = Color(0xFF000103);
 
-  //static const mediumText = TextStyle(fontSize: 16);
-
   static final ThemeData lightTheme = ThemeData(
     appBarTheme: const AppBarTheme(
       color: AppStyles.white,
@@ -50,7 +48,10 @@ class AppStyles {
           fontSize: 16,
           color: AppStyles.white,
         ),
-        bodyMedium: const TextStyle(fontSize: 16, color: AppStyles.white)),
+        bodyMedium: const TextStyle(
+          fontSize: 16,
+          color: AppStyles.white,
+        )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.black,
       selectedItemColor: AppStyles.mindAro,
