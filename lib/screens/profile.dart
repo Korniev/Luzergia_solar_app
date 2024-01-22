@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,77 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final int _selectedIndex = 3;
   final NavigationService _navigationService = NavigationService();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  bool _isEditing = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _phoneController = TextEditingController();
+    _addressController = TextEditingController();
+    _loadUserData();
+  }
+
+  void _toggleEditing() {
+    setState(() {
+      _isEditing = !_isEditing;
+    });
+  }
+
+  void _loadUserData() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
+      final data = doc.data();
+      if (data != null) {
+        _nameController.text = data['name'] ?? '';
+        _phoneController.text = data['phone'] ?? '';
+        _addressController.text = data['address'] ?? '';
+      }
+    }
+  }
+
+  void _saveUserData() async {
+    final String name = _nameController.text;
+    final String phone = _phoneController.text;
+    final String address = _addressController.text;
+
+    if (name.isEmpty || phone.isEmpty || address.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Todos los campos son necesarios')),
+      );
+      return;
+    }
+
+    try {
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      if (userId != null) {
+        await FirebaseFirestore.instance.collection('users').doc(userId).set({
+          'name': name,
+          'phone': phone,
+          'address': address,
+        }, SetOptions(merge: true));
+
+        if (!mounted) return;
+        setState(() => _isEditing = false);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Datos guardados con éxito')),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al guardar los datos: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +116,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     labelText: 'Nombre y Apellido',
                     labelStyle: TextStyle(
                         color: Theme.of(context).textTheme.bodyLarge?.color)),
-              ),
-              const SizedBox(height: 10),
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: 'Correo electrónico',
-                    labelStyle: TextStyle(
-                      color: Theme.of(context).textTheme.bodyLarge?.color,
-                    )),
+                controller: _nameController,
+                enabled: _isEditing,
               ),
               const SizedBox(height: 10),
               TextFormField(
@@ -60,6 +126,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     labelStyle: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                     )),
+                controller: _phoneController,
+                enabled: _isEditing,
               ),
               const SizedBox(height: 10),
               TextFormField(
@@ -68,8 +136,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     labelStyle: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                     )),
+                controller: _addressController,
+                enabled: _isEditing,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 60),
               SwitchListTile(
                 title: Text(
                   'Dark Mode',
@@ -86,7 +156,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                 },
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (_isEditing) {
+                            _loadUserData();
+                          }
+                          _isEditing = !_isEditing;
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppStyles.pantone2,
+                          foregroundColor: AppStyles.pantone1),
+                      child: Text(_isEditing ? 'Cancelar' : 'Editar',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: _isEditing ? _saveUserData : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppStyles.pantone2,
+                        foregroundColor: AppStyles.pantone1,
+                        disabledBackgroundColor: AppStyles.ashGrey,
+                        disabledForegroundColor: AppStyles.ashGrey,
+                      ),
+                      child: Text('Guardar',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith()),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () async {
                   final contextCopy = context;
