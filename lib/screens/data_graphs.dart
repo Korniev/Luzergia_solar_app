@@ -29,20 +29,20 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
   Widget build(BuildContext context) {
     final energyData = Provider.of<EnergyProvider>(context);
     final imported = energyData.energyTotal.isNotEmpty
-        ? energyData.energyTotal.first.imported
+        ? energyData.energyTotal.last.imported
         : '0.0';
     final produced = energyData.energyTotal.isNotEmpty
-        ? energyData.energyTotal.first.produced
+        ? energyData.energyTotal.last.produced
         : '0.0';
     final consumed = energyData.energyTotal.isNotEmpty
-        ? energyData.energyTotal.first.consumed
+        ? energyData.energyTotal.last.consumed
         : '0.0';
     final exported = energyData.energyTotal.isNotEmpty
-        ? energyData.energyTotal.first.exported
+        ? energyData.energyTotal.last.exported
         : '0.0';
     String dateTimeDisplay = "";
     if (energyData.energyTotal.isNotEmpty) {
-      DateTime dateTime = energyData.energyTotal.first.dateTime;
+      DateTime dateTime = energyData.energyTotal.last.dateTime;
       dateTimeDisplay = DateFormat('dd-MM-yyyy – kk:mm').format(dateTime);
     }
 
