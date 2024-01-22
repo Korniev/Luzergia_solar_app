@@ -22,14 +22,15 @@ class AppStyles {
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.white,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
-        bodyLarge: const TextStyle(
-          fontSize: 16,
-          color: AppStyles.black,
-        ),
-        bodyMedium: const TextStyle(
-          fontSize: 16,
-          color: AppStyles.black,
-        )),
+        bodyLarge: GoogleFonts.montserratTextTheme()
+            .bodyLarge
+            ?.copyWith(color: Colors.white),
+        bodyMedium: GoogleFonts.montserratTextTheme()
+            .bodyMedium
+            ?.copyWith(color: Colors.white),
+        bodySmall: GoogleFonts.montserratTextTheme()
+            .bodySmall
+            ?.copyWith(color: Colors.white)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.pantone2,
       selectedItemColor: AppStyles.mindAro,
@@ -44,14 +45,52 @@ class AppStyles {
     useMaterial3: true,
     scaffoldBackgroundColor: AppStyles.dark,
     textTheme: GoogleFonts.montserratTextTheme().copyWith(
-        bodyLarge: const TextStyle(
-          fontSize: 16,
-          color: AppStyles.white,
-        ),
-        bodyMedium: const TextStyle(
-          fontSize: 16,
-          color: AppStyles.white,
-        )),
+      bodyLarge: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: Colors.white),
+      bodyMedium: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: Colors.white),
+      bodySmall: GoogleFonts.montserratTextTheme()
+          .bodySmall
+          ?.copyWith(color: Colors.white),
+      titleLarge: GoogleFonts.montserratTextTheme()
+          .titleLarge
+          ?.copyWith(color: Colors.white),
+      titleMedium: GoogleFonts.montserratTextTheme()
+          .titleMedium
+          ?.copyWith(color: Colors.white),
+      titleSmall: GoogleFonts.montserratTextTheme()
+          .titleSmall
+          ?.copyWith(color: Colors.white),
+      labelLarge: GoogleFonts.montserratTextTheme()
+          .labelLarge
+          ?.copyWith(color: Colors.white),
+      labelMedium: GoogleFonts.montserratTextTheme()
+          .labelMedium
+          ?.copyWith(color: Colors.white),
+      labelSmall: GoogleFonts.montserratTextTheme()
+          .labelLarge
+          ?.copyWith(color: Colors.white),
+      displayLarge: GoogleFonts.montserratTextTheme()
+          .displayLarge
+          ?.copyWith(color: Colors.white),
+      displayMedium: GoogleFonts.montserratTextTheme()
+          .displayMedium
+          ?.copyWith(color: Colors.white),
+      displaySmall: GoogleFonts.montserratTextTheme()
+          .displaySmall
+          ?.copyWith(color: Colors.white),
+      headlineLarge: GoogleFonts.montserratTextTheme()
+          .headlineLarge
+          ?.copyWith(color: Colors.white),
+      headlineMedium: GoogleFonts.montserratTextTheme()
+          .headlineMedium
+          ?.copyWith(color: Colors.white),
+      headlineSmall: GoogleFonts.montserratTextTheme()
+          .headlineSmall
+          ?.copyWith(color: Colors.white),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppStyles.black,
       selectedItemColor: AppStyles.mindAro,
