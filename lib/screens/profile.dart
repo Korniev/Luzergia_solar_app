@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
@@ -24,6 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   bool _isEditing = false;
+  String? _avatarUrl;
 
   @override
   void initState() {
@@ -32,12 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _phoneController = TextEditingController();
     _addressController = TextEditingController();
     _loadUserData();
-  }
-
-  void _toggleEditing() {
-    setState(() {
-      _isEditing = !_isEditing;
-    });
+    _loadAvatarUrl();
   }
 
   void _loadUserData() async {
@@ -52,6 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         _nameController.text = data['name'] ?? '';
         _phoneController.text = data['phone'] ?? '';
         _addressController.text = data['address'] ?? '';
+        _avatarUrl = data['avatarUrl'] ?? '';
       }
     }
   }
@@ -92,6 +93,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      _uploadImage(File(pickedFile.path));
+    }
+  }
+
+  Future<void> _uploadImage(File image) async {
+    try {
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      if (userId == null) return;
+
+      final storageRef =
+          FirebaseStorage.instance.ref().child('user_avatars/$userId');
+      await storageRef.putFile(image);
+
+      final imageUrl = await storageRef.getDownloadURL();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .update({'avatarUrl': imageUrl});
+
+      // Оновлення UI
+      setState(() {
+        _avatarUrl = imageUrl;
+      });
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No hemos podido cargar la imagen')),
+        );
+      }
+    }
+  }
+
+  void _loadAvatarUrl() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
+      final data = doc.data();
+      if (data != null) {
+        setState(() {
+          _avatarUrl = data['avatarUrl'] as String?;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,13 +154,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              CircleAvatar(
-                radius: 60,
-                backgroundColor: AppStyles.ashGrey,
-                child: Icon(
-                  Icons.person,
-                  size: 50,
-                  color: Colors.grey.shade600,
+              GestureDetector(
+                onTap: _pickImage,
+                child: CircleAvatar(
+                  radius: 80,
+                  backgroundColor: AppStyles.ashGrey,
+                  backgroundImage:
+                      _avatarUrl != null ? NetworkImage(_avatarUrl!) : null,
+                  child: _avatarUrl == null
+                      ? Icon(Icons.person,
+                          size: 50, color: Colors.grey.shade600)
+                      : null,
                 ),
               ),
               const SizedBox(height: 20),
@@ -139,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 controller: _addressController,
                 enabled: _isEditing,
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 50),
               SwitchListTile(
                 title: Text(
                   'Dark Mode',
@@ -156,7 +213,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
