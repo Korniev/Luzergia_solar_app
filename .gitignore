@@ -45,4 +45,6 @@ app.*.map.json
 /windows/
 /linux/
 .idea
+.idea/libraries/
+./.idea/runConfigurations/
 .idea/libraries/Dart_Packages.xml
