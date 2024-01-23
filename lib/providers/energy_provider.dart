@@ -9,7 +9,10 @@ class EnergyProvider extends ChangeNotifier {
 
   Future<void> loadEnergyData() async {
     try {
-      final snapshot = await db.collection('energyData').get();
+      final snapshot = await db
+          .collection('energyData')
+          .orderBy('dateTime', descending: false)
+          .get();
       final documents = snapshot.docs;
       final List<Energy> loadedData =
           documents.map((doc) => Energy.fromFirestore(doc)).toList();
