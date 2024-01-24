@@ -2,6 +2,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:luzergia_solar_app/firebase_options.dart';
 import 'package:luzergia_solar_app/providers/energy_provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         builder: (theme, darkTheme) => MaterialApp(
           title: 'Luzergia solar app',
           localizationsDelegates: [
+            AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
