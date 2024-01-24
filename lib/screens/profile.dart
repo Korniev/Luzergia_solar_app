@@ -113,8 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('users')
           .doc(userId)
           .update({'avatarUrl': imageUrl});
-
-      // Оновлення UI
+      
       setState(() {
         _avatarUrl = imageUrl;
       });
