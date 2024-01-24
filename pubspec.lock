@@ -290,7 +290,7 @@ packages:
     source: hosted
     version: "1.12.1"
   firebase_ui_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_ui_localizations
       sha256: "7029d9bce8365840957f4d1e3a7f938e893789da2071504d4f3b7eaa31f12fea"
@@ -335,7 +335,7 @@ packages:
     source: hosted
     version: "3.0.1"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
