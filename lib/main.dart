@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:luzergia_solar_app/firebase_options.dart';
 import 'package:luzergia_solar_app/providers/energy_provider.dart';
+import 'package:luzergia_solar_app/providers/updates_provider.dart';
 import 'package:luzergia_solar_app/screens/splash.dart';
 import 'package:luzergia_solar_app/services/firebase_initializer.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
@@ -30,28 +31,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => EnergyProvider(),
-      child: AdaptiveTheme(
-        light: AppStyles.lightTheme,
-        dark: AppStyles.darkTheme,
-        initial: savedThemeMode ?? AdaptiveThemeMode.light,
-        builder: (theme, darkTheme) => MaterialApp(
-          title: 'Luzergia solar app',
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            FirebaseUILocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('es'),
-            Locale('ca'),
-          ],
-          theme: theme,
-          darkTheme: darkTheme,
-          home: const Splash(),
+      create: (BuildContext context) => UpdateProvider(),
+      child: ChangeNotifierProvider(
+        create: (BuildContext context) => EnergyProvider(),
+        child: AdaptiveTheme(
+          light: AppStyles.lightTheme,
+          dark: AppStyles.darkTheme,
+          initial: savedThemeMode ?? AdaptiveThemeMode.light,
+          builder: (theme, darkTheme) => MaterialApp(
+            title: 'Luzergia solar app',
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              FirebaseUILocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'),
+              Locale('es'),
+              Locale('ca'),
+            ],
+            theme: theme,
+            darkTheme: darkTheme,
+            home: const Splash(),
+          ),
         ),
       ),
     );
