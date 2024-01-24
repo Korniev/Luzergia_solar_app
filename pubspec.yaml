@@ -120,7 +120,10 @@ flutter_launcher_icons:
     android: true
     ios: true
     image_path: "assets/icons/ic_luzergia.png"
-    min_sdk_android: 21 # android min sdk min:16, default 21
+    min_sdk_android: 21
+    remove_alpha_ios: true
+    adaptive_icon_background: "#4CBAB2"
+    adaptive_icon_foreground: "assets/icons/ic_luzergia.png"
     web:
       generate: true
       image_path: "assets/icons/ic_luzergia.png"
@@ -133,4 +136,3 @@ flutter_launcher_icons:
     macos:
       generate: true
       image_path: "assets/icons/ic_luzergia.png"
-    remove_alpha_ios: true
