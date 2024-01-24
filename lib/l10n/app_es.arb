@@ -1,0 +1,30 @@
+{
+  "actualizaciones": "Aquí tienes todas tus actualizaciones",
+  "@actualizaciones": {
+    "description": "La frase importante de segunda pantalla"
+  },
+  "pedidoRealizado": "Pedido realizado",
+  "correoDeConfirmacionEnviado": "Correo de confirmación enviado",
+  "pedidoEnCamino": "Pedido en camino",
+  "pedidoEntregado": "Pedido entregado",
+  "importado": "Importado",
+  "producido": "Producido",
+  "consumido": "Consumido",
+  "exportado": "Exportado",
+  "nombreApellido": "Nombre y Apellido",
+  "numeroDeTelefono": "Número de teléfono",
+  "cuentanosTuProblema": "Cúentanos tu problema",
+  "borrar": "Borrar",
+  "enviar": "Enviar",
+  "nombrePerfil": "Nombre y Apellido",
+  "numeroPerfil": "Número de teléfono",
+  "domicilio": "Domicilio",
+  "darkMode": "Dark theme",
+  "editar": "Editar",
+  "guardar": "Guardar",
+  "cerrarSession": "Cerrar sessión",
+  "cancelar": "Cancelar",
+  "cargando": "Cargando...",
+  "inicializando": "Inicializando la aplicación..."
+
+}
