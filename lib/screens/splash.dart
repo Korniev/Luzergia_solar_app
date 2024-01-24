@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -53,6 +54,13 @@ class _SplashState extends State<Splash> {
         "${AppLocalizations.of(context)!.cargando}25%";
       });
     }
+
+    NotificationSettings settings =
+        await FirebaseMessaging.instance.requestPermission();
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      debugPrint("Podemos enviar mensajes");
+    }
+
     await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       setState(() {
