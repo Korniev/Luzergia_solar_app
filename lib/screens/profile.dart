@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:luzergia_solar_app/screens/splash.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
@@ -113,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('users')
           .doc(userId)
           .update({'avatarUrl': imageUrl});
-      
+
       setState(() {
         _avatarUrl = imageUrl;
       });
@@ -167,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: 'Nombre y Apellido',
+                    labelText: AppLocalizations.of(context)!.nombrePerfil,
                     labelStyle: TextStyle(
                         color: Theme.of(context).textTheme.bodyLarge?.color)),
                 controller: _nameController,
@@ -176,7 +177,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: 'Número de teléfono',
+                    labelText: AppLocalizations.of(context)!.numeroPerfil,
                     labelStyle: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                     )),
@@ -186,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: 'Domicilio',
+                    labelText: AppLocalizations.of(context)!.domicilio,
                     labelStyle: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                     )),
@@ -196,7 +197,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 50),
               SwitchListTile(
                 title: Text(
-                  'Dark Mode',
+                  AppLocalizations.of(context)!.darkMode,
                   style: TextStyle(
                     color: Theme.of(context).textTheme.bodyLarge?.color,
                   ),
@@ -227,7 +228,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: AppStyles.pantone2,
                           foregroundColor: AppStyles.pantone1),
-                      child: Text(_isEditing ? 'Cancelar' : 'Editar',
+                      child: Text(
+                          _isEditing
+                              ? AppLocalizations.of(context)!.cancelar
+                              : AppLocalizations.of(context)!.editar,
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -244,7 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         disabledBackgroundColor: AppStyles.ashGrey,
                         disabledForegroundColor: AppStyles.ashGrey,
                       ),
-                      child: Text('Guardar',
+                      child: Text(AppLocalizations.of(context)!.guardar,
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -270,7 +274,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppStyles.pantone2,
                     foregroundColor: AppStyles.pantone1),
-                child: Text('Cerrar sesión',
+                child: Text(AppLocalizations.of(context)!.cerrarSession,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               ),
             ],

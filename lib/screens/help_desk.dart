@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
@@ -73,7 +74,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
               const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Nombre y Apellido',
+                  labelText: AppLocalizations.of(context)!.nombreApellido,
                   labelStyle: TextStyle(
                     color: Theme.of(context).textTheme.bodyLarge?.color,
                   ),
@@ -84,7 +85,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Número de teléfono',
+                  labelText: AppLocalizations.of(context)!.numeroDeTelefono,
                   labelStyle: TextStyle(
                     color: Theme.of(context).textTheme.bodyLarge?.color,
                   ),
@@ -96,7 +97,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Cuéntanos tu problema',
+                  labelText: AppLocalizations.of(context)!.cuentanosTuProblema,
                   labelStyle: TextStyle(
                     color: Theme.of(context).textTheme.bodyLarge?.color,
                   ),
@@ -119,7 +120,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppStyles.pantone2,
                             foregroundColor: AppStyles.pantone1),
-                        child: Text('Borrar',
+                        child: Text(AppLocalizations.of(context)!.borrar,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
@@ -132,7 +133,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppStyles.pantone2,
                             foregroundColor: AppStyles.pantone1),
-                        child: Text('Enviar',
+                        child: Text(AppLocalizations.of(context)!.enviar,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge

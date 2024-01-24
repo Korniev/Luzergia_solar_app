@@ -2,6 +2,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:luzergia_solar_app/screens/data_graphs.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 
@@ -15,8 +16,6 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-  String status = "Inicializando la aplicación...";
-
   @override
   void initState() {
     super.initState();
@@ -37,7 +36,7 @@ class _SplashState extends State<Splash> {
                 width: 400.0, height: 400.0),
             const SizedBox(height: 2, width: 2),
             Text(
-              status,
+              AppLocalizations.of(context)!.inicializando,
               style: TextStyle(
                   color: isDarkTheme ? AppStyles.white : AppStyles.black),
             ),
@@ -51,13 +50,13 @@ class _SplashState extends State<Splash> {
     await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       setState(() {
-        status = "Cargando 25%";
+        "${AppLocalizations.of(context)!.cargando}25%";
       });
     }
     await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       setState(() {
-        status = "Cargando 50%";
+        "${AppLocalizations.of(context)!.cargando}50%";
       });
     }
 
@@ -100,7 +99,7 @@ class _SplashState extends State<Splash> {
     await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       setState(() {
-        status = "Cargando 100%";
+        "${AppLocalizations.of(context)!.cargando}100%";
       });
     }
   }

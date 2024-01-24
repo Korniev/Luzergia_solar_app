@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:luzergia_solar_app/widgets/arrow_painter.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
@@ -93,7 +94,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     children: [
                       Image.asset('lib/images/icono_luzergia_red.png',
                           width: 100.0, height: 100.0),
-                      Text('Importado:\n   $imported ',
+                      Text(
+                          '${AppLocalizations.of(context)!.importado}\n  $imported ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -108,7 +110,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     children: [
                       Image.asset('lib/images/icono_luzergia_sol.png',
                           width: 100.0, height: 100.0),
-                      Text('Producido:\n   $produced ',
+                      Text(
+                          '${AppLocalizations.of(context)!.producido}\n  $produced ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -123,7 +126,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     children: [
                       Image.asset('lib/images/icono_luzergia_home.png',
                           width: 100.0, height: 100.0),
-                      Text('Consumido:\n    $consumed ',
+                      Text(
+                          '${AppLocalizations.of(context)!.consumido}\n   $consumed ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -138,7 +142,8 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     children: [
                       Image.asset('lib/images/icono_luzergia_red.png',
                           width: 100.0, height: 100.0),
-                      Text('Exportado:\n   $exported ',
+                      Text(
+                          '${AppLocalizations.of(context)!.exportado}\n $exported ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge

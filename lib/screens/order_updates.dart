@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_appbar.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
@@ -39,27 +40,28 @@ class _OrderUpdatesScreenState extends State<OrderUpdatesScreen> {
             padding:
                 const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
             children: [
-              Text('Aquí tienes todas tus actualizaciones',
+              Text(AppLocalizations.of(context)!.actualizaciones,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
               const SizedBox(height: 24.0),
               UpdateTile(
                 iconData: Icons.shopping_cart,
-                title: 'Pedido realizado',
+                title: AppLocalizations.of(context)!.pedidoRealizado,
                 isActive: updateData['pedidoRealizado'] ?? false,
               ),
               UpdateTile(
                 iconData: Icons.mail,
-                title: 'Correo de confirmación enviado',
+                title:
+                    AppLocalizations.of(context)!.correoDeConfirmacionEnviado,
                 isActive: updateData['correoConfirmacionEnviado'] ?? false,
               ),
               UpdateTile(
                 iconData: Icons.local_shipping,
-                title: 'Pedido en camino',
+                title: AppLocalizations.of(context)!.pedidoEnCamino,
                 isActive: updateData['pedidoEnCamino'] ?? false,
               ),
               UpdateTile(
                 iconData: Icons.home,
-                title: 'Pedido entregado',
+                title: AppLocalizations.of(context)!.pedidoEntregado,
                 isActive: updateData['pedidoEntregado'] ?? false,
               ),
             ],
