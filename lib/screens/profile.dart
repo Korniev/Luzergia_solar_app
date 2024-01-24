@@ -4,15 +4,13 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:luzergia_solar_app/screens/splash.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
 import 'package:luzergia_solar_app/widgets/custom_navigation_bar.dart';
 
 import '../widgets/custom_appbar.dart';
-import '../widgets/custom_header.dart';
-import 'data_graphs.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -265,29 +263,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (mounted) {
                     Navigator.of(contextCopy).pushReplacement(
                       MaterialPageRoute(
-                        builder: (_) => SignInScreen(
-                          headerBuilder: (context, constraints, _) {
-                            return const CustomHeader();
-                          },
-                          providers: [EmailAuthProvider()],
-                          actions: [
-                            AuthStateChangeAction<SignedIn>((context, state) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const DataGraphsScreen()));
-                            }),
-                            AuthStateChangeAction<UserCreated>(
-                                (context, state) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const DataGraphsScreen()));
-                            }),
-                          ],
-                        ),
+                        builder: (_) => const Splash(),
                       ),
                     );
                   }
