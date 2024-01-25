@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ Future<void> main() async {
   await firebaseInitializer.createRandomDefaultEnergyData();
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
   runApp(MyApp(savedThemeMode: savedThemeMode));
 }
 
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         create: (BuildContext context) => EnergyProvider(),
         child: AdaptiveTheme(
           light: AppStyles.lightTheme,
-          dark: AppStyles.darkTheme,
+          dark: AppStyles.darkTheme(context),
           initial: savedThemeMode ?? AdaptiveThemeMode.light,
           builder: (theme, darkTheme) => MaterialApp(
             title: 'Luzergia solar app',
@@ -60,4 +62,9 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> backgroundMessageHandler(RemoteMessage remoteMessage) async {
+  await Firebase.initializeApp();
+  debugPrint("Mensaje recibido en background: ${remoteMessage.messageId}");
 }
