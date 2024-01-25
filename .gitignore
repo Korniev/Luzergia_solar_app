@@ -44,7 +44,8 @@ app.*.map.json
 /android/app/release
 /windows/
 /linux/
-.idea
-.idea/libraries/
+idea
+idea/libraries/
 ./.idea/runConfigurations/
 .idea/libraries/Dart_Packages.xml
+functions/
