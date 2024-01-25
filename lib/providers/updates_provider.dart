@@ -5,12 +5,20 @@ class UpdateProvider extends ChangeNotifier {
   bool isInitialized = false;
   String? fcmToken;
 
-  UpdateProvider() {
-    init();
-  }
+  UpdateProvider();
 
   Future<void> init() async {
     fcmToken = await FirebaseMessaging.instance.getToken();
     debugPrint(fcmToken);
+
+    FirebaseMessaging.onMessage.listen((event) {
+      debugPrint("Mensaje recibido");
+      debugPrint("${event.data}");
+      if (event.notification != null) {
+        debugPrint("${event.notification!.title}");
+      }
+    });
+
+    FirebaseMessaging.instance.subscribeToTopic('orderUpdates');
   }
 }
