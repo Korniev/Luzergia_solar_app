@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:luzergia_solar_app/screens/data_graphs.dart';
 import 'package:luzergia_solar_app/styles/app_styles.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/updates_provider.dart';
 import '../widgets/custom_header.dart';
 
 class Splash extends StatefulWidget {
@@ -48,6 +50,7 @@ class _SplashState extends State<Splash> {
   }
 
   Future<void> init() async {
+    Provider.of<UpdateProvider>(context, listen: false).init();
     await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       setState(() {
