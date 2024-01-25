@@ -66,5 +66,8 @@ class MyApp extends StatelessWidget {
 
 Future<void> backgroundMessageHandler(RemoteMessage remoteMessage) async {
   await Firebase.initializeApp();
-  debugPrint("Mensaje recibido en background: ${remoteMessage.messageId}");
+  debugPrint("Background message received: ${remoteMessage.messageId}");
+  if (remoteMessage.notification != null) {
+    debugPrint("Background notification: ${remoteMessage.notification!.title}");
+  }
 }
