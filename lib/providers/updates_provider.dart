@@ -20,5 +20,6 @@ class UpdateProvider extends ChangeNotifier {
     });
 
     FirebaseMessaging.instance.subscribeToTopic('orderUpdates');
+    debugPrint("Subscribed to 'orderUpdates' topic");
   }
 }
