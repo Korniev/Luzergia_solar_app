@@ -77,63 +77,67 @@ class AppStyles {
     ),
   );
 
-  static final ThemeData darkTheme = ThemeData(
-    appBarTheme: const AppBarTheme(color: AppStyles.dark),
-    useMaterial3: true,
-    scaffoldBackgroundColor: AppStyles.dark,
-    textTheme: GoogleFonts.montserratTextTheme().copyWith(
-      bodyLarge: GoogleFonts.montserratTextTheme()
-          .bodySmall
-          ?.copyWith(color: Colors.white),
-      bodyMedium: GoogleFonts.montserratTextTheme()
-          .bodySmall
-          ?.copyWith(color: Colors.white),
-      bodySmall: GoogleFonts.montserratTextTheme()
-          .bodySmall
-          ?.copyWith(color: Colors.white),
-      titleLarge: GoogleFonts.montserratTextTheme()
-          .titleLarge
-          ?.copyWith(color: Colors.white),
-      titleMedium: GoogleFonts.montserratTextTheme()
-          .titleMedium
-          ?.copyWith(color: Colors.white),
-      titleSmall: GoogleFonts.montserratTextTheme()
-          .titleSmall
-          ?.copyWith(color: Colors.white),
-      labelLarge: GoogleFonts.montserratTextTheme()
-          .labelLarge
-          ?.copyWith(color: Colors.white),
-      labelMedium: GoogleFonts.montserratTextTheme()
-          .labelMedium
-          ?.copyWith(color: Colors.white),
-      labelSmall: GoogleFonts.montserratTextTheme()
-          .labelLarge
-          ?.copyWith(color: Colors.white),
-      displayLarge: GoogleFonts.montserratTextTheme()
-          .displayLarge
-          ?.copyWith(color: Colors.white),
-      displayMedium: GoogleFonts.montserratTextTheme()
-          .displayMedium
-          ?.copyWith(color: Colors.white),
-      displaySmall: GoogleFonts.montserratTextTheme()
-          .displaySmall
-          ?.copyWith(color: Colors.white),
-      headlineLarge: GoogleFonts.montserratTextTheme()
-          .headlineLarge
-          ?.copyWith(color: Colors.white),
-      headlineMedium: GoogleFonts.montserratTextTheme()
-          .headlineMedium
-          ?.copyWith(color: Colors.white),
-      headlineSmall: GoogleFonts.montserratTextTheme()
-          .headlineSmall
-          ?.copyWith(color: Colors.white),
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppStyles.black,
-      selectedItemColor: AppStyles.mindAro,
-      unselectedItemColor: AppStyles.white,
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-    ),
-  );
+  static ThemeData darkTheme(BuildContext context) => ThemeData(
+        appBarTheme: const AppBarTheme(color: AppStyles.dark),
+        useMaterial3: true,
+        scaffoldBackgroundColor: AppStyles.dark,
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: AppStyles.celticBlue,
+              onPrimary: AppStyles.black,
+            ),
+        textTheme: GoogleFonts.montserratTextTheme().copyWith(
+          bodyLarge: GoogleFonts.montserratTextTheme()
+              .bodySmall
+              ?.copyWith(color: Colors.white),
+          bodyMedium: GoogleFonts.montserratTextTheme()
+              .bodySmall
+              ?.copyWith(color: Colors.white),
+          bodySmall: GoogleFonts.montserratTextTheme()
+              .bodySmall
+              ?.copyWith(color: Colors.white),
+          titleLarge: GoogleFonts.montserratTextTheme()
+              .titleLarge
+              ?.copyWith(color: Colors.white),
+          titleMedium: GoogleFonts.montserratTextTheme()
+              .titleMedium
+              ?.copyWith(color: Colors.white),
+          titleSmall: GoogleFonts.montserratTextTheme()
+              .titleSmall
+              ?.copyWith(color: Colors.white),
+          labelLarge: GoogleFonts.montserratTextTheme()
+              .labelLarge
+              ?.copyWith(color: Colors.white),
+          labelMedium: GoogleFonts.montserratTextTheme()
+              .labelMedium
+              ?.copyWith(color: Colors.white),
+          labelSmall: GoogleFonts.montserratTextTheme()
+              .labelLarge
+              ?.copyWith(color: Colors.white),
+          displayLarge: GoogleFonts.montserratTextTheme()
+              .displayLarge
+              ?.copyWith(color: Colors.white),
+          displayMedium: GoogleFonts.montserratTextTheme()
+              .displayMedium
+              ?.copyWith(color: Colors.white),
+          displaySmall: GoogleFonts.montserratTextTheme()
+              .displaySmall
+              ?.copyWith(color: Colors.white),
+          headlineLarge: GoogleFonts.montserratTextTheme()
+              .headlineLarge
+              ?.copyWith(color: Colors.white),
+          headlineMedium: GoogleFonts.montserratTextTheme()
+              .headlineMedium
+              ?.copyWith(color: Colors.white),
+          headlineSmall: GoogleFonts.montserratTextTheme()
+              .headlineSmall
+              ?.copyWith(color: Colors.white),
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppStyles.black,
+          selectedItemColor: AppStyles.mindAro,
+          unselectedItemColor: AppStyles.white,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+        ),
+      );
 }
