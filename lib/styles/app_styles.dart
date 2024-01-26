@@ -82,7 +82,7 @@ class AppStyles {
         useMaterial3: true,
         scaffoldBackgroundColor: AppStyles.dark,
         colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: AppStyles.celticBlue,
+              primary: AppStyles.pantone2,
               onPrimary: AppStyles.black,
             ),
         textTheme: GoogleFonts.montserratTextTheme().copyWith(
