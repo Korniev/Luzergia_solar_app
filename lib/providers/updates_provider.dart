@@ -40,7 +40,7 @@ class UpdateProvider extends ChangeNotifier {
 
   Future<void> _showNotification(String? title, String? body) async {
     var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-        'your_channel_id', 'your_channel_name',
+        'order_updates_channel', 'Order Updates',
         importance: Importance.max, priority: Priority.high, showWhen: false);
     var platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
