@@ -54,22 +54,18 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     final double screenWidth = screenSize.width;
     final double screenHeight = screenSize.height;
 
-    const Offset startArrow1 =
-        Offset(50 + iconSize / 2, 18 + iconSize + textHeight);
-    final Offset endArrow1 =
-        Offset(screenWidth - 200 - iconSize / 2, 230 + iconSize / 2);
+    final Offset startArrow1 =
+        Offset(screenWidth * 0.23, textHeight + iconSize + 10);
+    final Offset endArrow1 = Offset(screenWidth * 0.38, screenHeight * 0.33);
     final Offset cornerArrow1 = Offset(startArrow1.dx, endArrow1.dy);
 
     final Offset startArrow2 =
-        Offset(screenWidth - 50 - iconSize / 2, 18 + iconSize + textHeight);
-    final Offset endArrow2 =
-        Offset(screenWidth - 100 - iconSize / 2, 230 + iconSize / 2);
+        Offset(screenWidth * 0.77, textHeight + iconSize + 10);
+    final Offset endArrow2 = Offset(screenWidth * 0.65, screenHeight * 0.33);
     final Offset cornerArrow2 = Offset(startArrow2.dx, endArrow2.dy);
 
-    final Offset startArrow3 =
-        Offset(screenWidth - 150 - iconSize / 2, 230 + iconSize + textHeight);
-    final Offset endArrow3 = Offset(
-        screenWidth - 150 - iconSize / 2, screenHeight - 290 - iconSize / 2);
+    final Offset startArrow3 = Offset(screenWidth * 0.51, screenHeight * 0.43);
+    final Offset endArrow3 = Offset(screenWidth * 0.51, screenHeight * 0.6);
 
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -89,7 +85,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
               children: <Widget>[
                 Positioned(
                   top: 15,
-                  left: 50,
+                  left: screenWidth * 0.1,
                   child: Column(
                     children: [
                       Image.asset('lib/images/icono_luzergia_red.png',
@@ -105,7 +101,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                 ),
                 Positioned(
                   top: 15,
-                  right: 50,
+                  right: screenWidth * 0.1,
                   child: Column(
                     children: [
                       Image.asset('lib/images/icono_luzergia_sol.png',
@@ -121,7 +117,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                 ),
                 Positioned(
                   top: 230,
-                  right: 150,
+                  right: screenWidth * 0.37,
                   child: Column(
                     children: [
                       Image.asset('lib/images/icono_luzergia_home.png',
@@ -137,7 +133,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                 ),
                 Positioned(
                   bottom: 20,
-                  right: 150,
+                  right: screenWidth * 0.37,
                   child: Column(
                     children: [
                       Image.asset('lib/images/icono_luzergia_red.png',
