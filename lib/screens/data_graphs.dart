@@ -174,7 +174,6 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     painter: ArrowPainter(start: startArrow3, end: endArrow3),
                   ),
                 ),
-                // Тут додайте інші `Positioned` віджети для розміщення інших елементів
               ],
             ),
           ),
