@@ -28,6 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController _addressController = TextEditingController();
   bool _isEditing = false;
   String? _avatarUrl;
+  bool isUserDataComplete = false;
 
   @override
   void initState() {
@@ -80,6 +81,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         if (!mounted) return;
         setState(() => _isEditing = false);
 
+        setState(() {
+          isUserDataComplete = true;
+        });
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Datos guardados con éxito')),
         );
@@ -105,11 +110,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       final userId = FirebaseAuth.instance.currentUser?.uid;
       if (userId == null) return;
 
+      if (!isUserDataComplete) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Primero hay que rellenar los campos')),
+        );
+        return;
+      }
+
       final storageRef =
           FirebaseStorage.instance.ref().child('user_avatars/$userId');
       await storageRef.putFile(image);
 
       final imageUrl = await storageRef.getDownloadURL();
+
       await FirebaseFirestore.instance
           .collection('users')
           .doc(userId)
