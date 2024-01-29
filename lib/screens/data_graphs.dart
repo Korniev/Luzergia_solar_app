@@ -138,7 +138,7 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
                     ),
                     Positioned(
                       bottom: 20,
-                      right: screenWidth * 0.37,
+                      right: screenWidth * 0.39,
                       child: Column(
                         children: [
                           Image.asset('lib/images/icono_luzergia_red.png',
