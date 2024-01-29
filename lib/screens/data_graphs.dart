@@ -48,132 +48,140 @@ class _DataGraphsScreenState extends State<DataGraphsScreen> {
     }
 
     final Size screenSize = MediaQuery.of(context).size;
-    const double iconSize = 100.0;
     const double textHeight = 50.0;
-
     final double screenWidth = screenSize.width;
     final double screenHeight = screenSize.height;
-
-    final Offset startArrow1 =
-        Offset(screenWidth * 0.23, textHeight + iconSize + 10);
-    final Offset endArrow1 = Offset(screenWidth * 0.38, screenHeight * 0.33);
-    final Offset cornerArrow1 = Offset(startArrow1.dx, endArrow1.dy);
-
-    final Offset startArrow2 =
-        Offset(screenWidth * 0.77, textHeight + iconSize + 10);
-    final Offset endArrow2 = Offset(screenWidth * 0.65, screenHeight * 0.33);
-    final Offset cornerArrow2 = Offset(startArrow2.dx, endArrow2.dy);
-
-    final Offset startArrow3 = Offset(screenWidth * 0.51, screenHeight * 0.43);
-    final Offset endArrow3 = Offset(screenWidth * 0.51, screenHeight * 0.6);
+    final double iconSize = screenWidth * 0.2;
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: Center(
-              child: Text(
-                dateTimeDisplay,
-                style: Theme.of(context).textTheme.bodyLarge,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final Offset startArrow1 =
+              Offset(screenWidth * 0.23, textHeight + iconSize + 10);
+          final Offset endArrow1 =
+              Offset(screenWidth * 0.38, screenHeight * 0.33);
+          final Offset cornerArrow1 = Offset(startArrow1.dx, endArrow1.dy);
+
+          final Offset startArrow2 =
+              Offset(screenWidth * 0.77, textHeight + iconSize + 10);
+          final Offset endArrow2 =
+              Offset(screenWidth * 0.65, screenHeight * 0.33);
+          final Offset cornerArrow2 = Offset(startArrow2.dx, endArrow2.dy);
+
+          final Offset startArrow3 =
+              Offset(screenWidth * 0.51, screenHeight * 0.43);
+          final Offset endArrow3 =
+              Offset(screenWidth * 0.51, screenHeight * 0.6);
+
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Center(
+                  child: Text(
+                    dateTimeDisplay,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  top: 15,
-                  left: screenWidth * 0.1,
-                  child: Column(
-                    children: [
-                      Image.asset('lib/images/icono_luzergia_red.png',
-                          width: 100.0, height: 100.0),
-                      Text(
-                          '${AppLocalizations.of(context)!.importado}\n  $imported ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith()),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: 15,
-                  right: screenWidth * 0.1,
-                  child: Column(
-                    children: [
-                      Image.asset('lib/images/icono_luzergia_sol.png',
-                          width: 100.0, height: 100.0),
-                      Text(
-                          '${AppLocalizations.of(context)!.producido}\n  $produced ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith()),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: 230,
-                  right: screenWidth * 0.37,
-                  child: Column(
-                    children: [
-                      Image.asset('lib/images/icono_luzergia_home.png',
-                          width: 100.0, height: 100.0),
-                      Text(
-                          '${AppLocalizations.of(context)!.consumido}\n   $consumed ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith()),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 20,
-                  right: screenWidth * 0.37,
-                  child: Column(
-                    children: [
-                      Image.asset('lib/images/icono_luzergia_red.png',
-                          width: 100.0, height: 100.0),
-                      Text(
-                          '${AppLocalizations.of(context)!.exportado}\n $exported ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith()),
-                    ],
-                  ),
-                ),
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: ArrowPainter(
-                      start: startArrow1,
-                      end: endArrow1,
-                      corner: cornerArrow1,
+              Expanded(
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 15,
+                      left: screenWidth * 0.1,
+                      child: Column(
+                        children: [
+                          Image.asset('lib/images/icono_luzergia_red.png',
+                              width: iconSize, height: iconSize),
+                          Text(
+                              '${AppLocalizations.of(context)!.importado}\n  $imported ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith()),
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: ArrowPainter(
-                      start: startArrow2,
-                      end: endArrow2,
-                      corner: cornerArrow2,
+                    Positioned(
+                      top: 15,
+                      right: screenWidth * 0.1,
+                      child: Column(
+                        children: [
+                          Image.asset('lib/images/icono_luzergia_sol.png',
+                              width: iconSize, height: iconSize),
+                          Text(
+                              '${AppLocalizations.of(context)!.producido}\n  $produced ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith()),
+                        ],
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      top: 230,
+                      right: screenWidth * 0.37,
+                      child: Column(
+                        children: [
+                          Image.asset('lib/images/icono_luzergia_home.png',
+                              width: iconSize, height: iconSize),
+                          Text(
+                              '${AppLocalizations.of(context)!.consumido}\n   $consumed ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith()),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      right: screenWidth * 0.37,
+                      child: Column(
+                        children: [
+                          Image.asset('lib/images/icono_luzergia_red.png',
+                              width: iconSize, height: iconSize),
+                          Text(
+                              '${AppLocalizations.of(context)!.exportado}\n $exported ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith()),
+                        ],
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: CustomPaint(
+                        painter: ArrowPainter(
+                          start: startArrow1,
+                          end: endArrow1,
+                          corner: cornerArrow1,
+                        ),
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: CustomPaint(
+                        painter: ArrowPainter(
+                          start: startArrow2,
+                          end: endArrow2,
+                          corner: cornerArrow2,
+                        ),
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: CustomPaint(
+                        painter:
+                            ArrowPainter(start: startArrow3, end: endArrow3),
+                      ),
+                    ),
+                  ],
                 ),
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: ArrowPainter(start: startArrow3, end: endArrow3),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
