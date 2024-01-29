@@ -22,5 +22,9 @@
   "cerrarSession": "Tancar sessió",
   "cancelar": "Cancel·lar",
   "cargando": "Carregant...",
-  "inicializando": "Inicialitzant l'aplicació..."
+  "inicializando": "Inicialitzant l'aplicació...",
+  "camposNecesarios": "Tots els camps són necessaris",
+  "datosGuardados": "Dades guardades amb èxit",
+  "primeroRellenar": "Primer cal emplenar els camps",
+  "noHemosPodido": "No hem pogut carregar la imatge"
 }

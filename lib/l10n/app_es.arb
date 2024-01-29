@@ -25,6 +25,9 @@
   "cerrarSession": "Cerrar sessión",
   "cancelar": "Cancelar",
   "cargando": "Cargando...",
-  "inicializando": "Inicializando la aplicación..."
-
+  "inicializando": "Inicializando la aplicación...",
+  "camposNecesarios": "Todos los campos son necesarios",
+  "datosGuardados": "Datos guardados con éxito",
+  "primeroRellenar": "Primero hay que rellenar los campos",
+  "noHemosPodido": "No hemos podido cargar la imagen"
 }

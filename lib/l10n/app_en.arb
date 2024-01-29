@@ -22,5 +22,9 @@
   "cerrarSession": "Log out",
   "cancelar": "Cancel",
   "cargando": "Loading...",
-  "inicializando": "Initializing the application..."
+  "inicializando": "Initializing the application...",
+  "camposNecesarios": "All fields are required",
+  "datosGuardados": "Data saved successfully",
+  "primeroRellenar": "First you have to fill out the fields",
+  "noHemosPodido": "We could not load the image"
 }
