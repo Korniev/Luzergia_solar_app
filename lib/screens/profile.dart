@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     if (name.isEmpty || phone.isEmpty || address.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Todos los campos son necesarios')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.camposNecesarios)),
       );
       return;
     }
@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Datos guardados con éxito')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.datosGuardados)),
         );
       }
     } catch (e) {
@@ -112,7 +112,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       if (!isUserDataComplete) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Primero hay que rellenar los campos')),
+          SnackBar(
+              content: Text(AppLocalizations.of(context)!.primeroRellenar)),
         );
         return;
       }
@@ -134,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No hemos podido cargar la imagen')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.noHemosPodido)),
         );
       }
     }
